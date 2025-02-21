@@ -1,4 +1,4 @@
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/Logo.jpg';
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
@@ -13,7 +13,7 @@ function Header() {
         if (searchTerm.trim() !== "") {
             console.log("Từ khóa tìm kiếm:", searchTerm);
             navigate(`/search/${searchTerm}`); 
-            setSearchTerm("");  // Reset input sau khi tìm kiếm
+            setSearchTerm("");  
         }
     };
     
