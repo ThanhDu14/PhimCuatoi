@@ -38,7 +38,7 @@ const FilmSearch = () => {
 
     return (
         <div>
-            <h2 className="font-bold text-4xl mb-[60px] mt-[40px]">Kết quả tìm kiếm cho: {keyword}</h2>
+            <h2 className="mt-[100px] mb-[50px] font-bold text-4xl">Danh Sách Phim: {keyword}</h2>
             {data.length > 0 ? (
                 
                 <Carousel responsive={responsive} className="flex justify-between">
