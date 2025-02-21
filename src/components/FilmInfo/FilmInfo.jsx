@@ -52,7 +52,7 @@ const FilmInfo = () => {
         <div className="flex flex-col p-4">
             <div className="flex flex-col">
                 <div className="flex items-start gap-4">
-                    <img src={poster_url} alt={name} className="w-[300px] h-auto  rounded-lg shadow-lg mb-4" />
+                    <img src={poster_url} alt={name} className="w-[300px] h-auto  rounded-lg shadow-lg mb-4 transition-transform duration-500 hover:scale-110" />
 
                    
                     <div className="flex-1">
@@ -67,14 +67,14 @@ const FilmInfo = () => {
             {episodeList.length > 1 ? (
 
                 <div className="flex flex-wrap gap-2 ">
-                    Danh Sách Tập Phim<br></br>
+                   
                     {episodeList.map((ep, index) => (
                         <a
                             key={index}
                             href={ep.link_embed}
                             target="_self"
                             rel="noopener noreferrer"
-                            className="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600"
+                            className="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 "
                         >
                             Tập {index + 1}
                         </a>

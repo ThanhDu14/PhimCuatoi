@@ -56,7 +56,7 @@ const PhimBo = () => {
                                 <img 
                                     src={`${baseUrl}${item.poster_url}`}
                                     alt={`Phim ${item.name}`}
-                                    className="w-[200px] h-[300px] object-cover mb-[20px] cursor-pointer"
+                                    className="w-[200px] h-[300px] object-cover mb-[20px] cursor-pointer transition-transform duration-500 hover:scale-110"
                                     onClick={() => handleClick(item.slug)}
                                 />
                                 <button onClick={() => handleClick(item.slug)} className="font-bold text-gray-400">

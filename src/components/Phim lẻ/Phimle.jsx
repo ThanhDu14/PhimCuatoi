@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -8,7 +8,7 @@ const baseUrl = "https://phimimg.com/";
 const PhimLe = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAPI = () => {
@@ -28,7 +28,7 @@ const PhimLe = () => {
     }, []);
 
     const handleClick = (slug) => {
-        navigate(`/phim/${slug}`); 
+        navigate(`/phim/${slug}`);
     };
 
     const responsive = {
@@ -53,12 +53,13 @@ const PhimLe = () => {
                     <Carousel responsive={responsive} className="flex justify-between">
                         {data.map((item, index) => (
                             <div key={index} className="flex flex-col items-center">
-                                <img 
+                                <img
                                     src={`${baseUrl}${item.poster_url}`}
                                     alt={`Phim ${item.name}`}
-                                    className="w-[200px] h-[300px] object-cover mb-[20px] cursor-pointer"
+                                    className="w-[200px] h-[300px] object-cover mb-[20px] cursor-pointer transition-transform duration-500 hover:scale-110"
                                     onClick={() => handleClick(item.slug)}
                                 />
+
                                 <button onClick={() => handleClick(item.slug)} className="font-bold text-gray-400">
                                     {item.name}
                                 </button>
