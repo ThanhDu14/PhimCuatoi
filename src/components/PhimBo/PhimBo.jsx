@@ -43,10 +43,13 @@ const PhimBo = () => {
             <div className="mt-[100px] mb-[50px] font-bold text-4xl">Phim Bộ</div>
 
             {loading ? (
-                <div className="flex flex-row gap-2 justify-center items-center mt-[200px]">
-                    <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce"></div>
-                    <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:-.3s]"></div>
-                    <div className="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:-.5s]"></div>
+                <div className="flex space-x-4 justify-between  overflow-hidden">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <div key={index} className="flex flex-col items-center animate-pulse">
+                            <div className="w-[200px] h-[300px] bg-gray-300 rounded-md"></div>
+                            <div className="w-[150px] h-4 bg-gray-300 mt-3 rounded"></div>
+                        </div>
+                    ))}
                 </div>
             ) : (
                 <div>

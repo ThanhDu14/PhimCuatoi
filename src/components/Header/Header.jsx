@@ -34,18 +34,18 @@ function Header() {
                             <li className="p-4 hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
                         </ul>
                     </div>
-                    <form onSubmit={handleSubmit} className="flex items-center">
+                    <form onSubmit={handleSubmit} className="flex items-center ">
                         <input
                             type="text"
                             placeholder="Tìm kiếm..."
-                            className="border border-red-500 p-2 bg-black text-white placeholder-gray-500"
+                            className="border border-red-500 p-2 bg-black text-white placeholder-gray-500 rounded-[35px]"
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)} 
                         />
                         <button type="submit">
                             <CiSearch color="red" className="font-bold text-red-500 ml-2 cursor-pointer" />
                         </button>
-                    </form>
+                    </form> 
                 </div>
             </div>
         </div>

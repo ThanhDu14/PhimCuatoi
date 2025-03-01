@@ -67,7 +67,7 @@ const FilmInfo = () => {
             {episodeList.length > 1 ? (
 
                 <div className="flex flex-wrap gap-2 ">
-                   
+                    <div className="text-xl font-bold mb-2">Danh sách tập phim:</div>
                     {episodeList.map((ep, index) => (
                         <a
                             key={index}

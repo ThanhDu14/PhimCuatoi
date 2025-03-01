@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Thêm useNavigate
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import FilmInfo from '../FilmInfo/FilmInfo';
 
 function LandingPage() {
@@ -17,7 +17,7 @@ function LandingPage() {
         const result = await response.json();
 
         if (result.items) {
-          setData(result.items);
+          setData(result.items);  
         } else {
           setError("Không có dữ liệu phim.");
         }
@@ -36,12 +36,17 @@ function LandingPage() {
   const handleFilmSelect = (slug) => {
     navigate(`/phim/${slug}`); // Chuyển trang đến /phim/slug
   };
-
+  const responsive = {
+    superLargeDesktop: { breakpoint: { max: 2000, min: 1000 }, items: 1 },
+    desktop: { breakpoint: { max: 1000, min: 800 }, items: 1 },
+    tablet: { breakpoint: { max: 800, min: 464 }, items: 1 },
+    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 }
+};
   return (
     <div>
-      {loading ? (
-        <div className="flex justify-center items-center mt-[200px]">
-          <div className="flex space-x-2">
+      { loading ? (
+        <div className="flex justify-center items-center mt-[200px] mb-[200px]">
+          <div className="flex space-x-2 ">
             <div className="w-4 h-4 rounded-full bg-red-500 animate-ping"></div>
             <div className="w-4 h-4 rounded-full bg-red-500 animate-ping [animation-delay:-0.3s]"></div>
             <div className="w-4 h-4 rounded-full bg-red-500 animate-ping [animation-delay:-0.5s]"></div>
@@ -50,21 +55,26 @@ function LandingPage() {
       ) : error ? (
         <div className="text-red-500 text-center mt-20 text-lg">{error}</div>
       ) : data.length ? (
-        <AwesomeSlider animation="cubeAnimation">
+        <Carousel responsive={responsive} 
+          autoPlay={true} 
+          autoPlaySpeed={2000} // Thời gian chuyển slide (3 giây)
+          infinite={true}
+          swipeable={true}  
+          draggable={true}  >
           {data.map((item, index) => (
             <div key={index} className="relative">
-              <div className="absolute top-[200px] left-20 text-white text-8xl font-bold max-w-[1000px]">
+              <div className="absolute top-[200px] left-20 text-white text-4xl font-bold max-w-[400px]">
                 {item.name}
               </div>
               <button
-                onClick={() => handleFilmSelect(item.slug)} // Chuyển trang khi click
+                onClick={() => handleFilmSelect(item.slug)} 
                 className="absolute top-[450px] left-20 border px-4 py-2 bg-red-500 text-white hover:bg-red-700 transition">
                 Xem Ngay
               </button>
               <img src={item.thumb_url} alt={`Slide ${index}`} className="w-full h-auto rounded-lg shadow-lg" />
             </div>
           ))}
-        </AwesomeSlider>
+        </Carousel>
       ) : (
         <div className="text-white text-center mt-20 text-lg">Không có phim mới.</div>
       )}

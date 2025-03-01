@@ -5,6 +5,7 @@ import PhimBo from './components/PhimBo/PhimBo';
 import FilmInfo from './components/FilmInfo/FilmInfo';
 import Phimle from './components/Phim lẻ/Phimle';
 import FilmSearch from './components/FilmSearch/FilmSearch';
+import Footer from './components/Footer/Footer';
 function App() {
   return (
     <Router> 
@@ -16,6 +17,9 @@ function App() {
         <Route path="/phim-le" element={<Phimle/> }/>
         <Route path="/search/:keyword" element={<FilmSearch/>}/>
       </Routes>
+      <PhimBo />
+      <Phimle/> 
+      <Footer/>
     </Router>
   );
 }
