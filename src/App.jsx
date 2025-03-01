@@ -17,8 +17,7 @@ function App() {
         <Route path="/phim-le" element={<Phimle/> }/>
         <Route path="/search/:keyword" element={<FilmSearch/>}/>
       </Routes>
-      <PhimBo />
-      <Phimle/> 
+      
       <Footer/>
     </Router>
   );
