@@ -6,16 +6,13 @@ import 'react-multi-carousel/lib/styles.css';
 const baseUrl = "https://phimimg.com/";
 
 const Skeleton = () => (
-    <div className="grid grid-cols-5 gap-4 p-4 animate-pulse">
-        <div className="col-span-2">
-            <div className="bg-gray-300 h-96 w-full rounded-lg mb-4"></div>
-        </div>
-        <div className="col-span-3 space-y-4">
-            <div className="h-6 bg-gray-300 rounded w-3/4"></div>
-            <div className="h-4 bg-gray-300 rounded w-full"></div>
-            <div className="h-4 bg-gray-300 rounded w-5/6"></div>
-            <div className="h-4 bg-gray-300 rounded w-1/2"></div>
-        </div>
+    <div className="flex space-x-4 justify-between overflow-hidden">
+        {Array.from({ length: 5 }).map((_, index) => (
+            <div key={index} className="flex flex-col items-center animate-pulse">
+                <div className="w-[200px] h-[300px] bg-gray-300 rounded-md"></div>
+                <div className="w-[150px] h-4 bg-gray-300 mt-3 rounded"></div>
+            </div>
+        ))}
     </div>
 );
 const FilmSearch = () => {
@@ -35,8 +32,8 @@ const FilmSearch = () => {
             try {
                 const res = await fetch(`https://phimapi.com/v1/api/tim-kiem?keyword=${keyword}`);
                 const result = await res.json();
-                setData(result.data.items); 
-                
+                setData(result.data.items);
+
             } catch (error) {
                 console.error("Lỗi khi gọi API:", error);
             }
@@ -53,7 +50,7 @@ const FilmSearch = () => {
         <div>
             <h2 className="mt-[100px] mb-[50px] font-bold text-4xl">Danh Sách Phim: {keyword}</h2>
             {data.length > 0 ? (
-                
+
                 <Carousel responsive={responsive} className="flex justify-between">
                     {data.map((item, index) => (
                         <div key={index} className="flex flex-col items-center">
