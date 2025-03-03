@@ -26,14 +26,19 @@ function Header() {
     const toggleSearch = () => {
         setIsSearchVisible(!isSearchVisible);
     };
-
+    const toggleMenuFalse = () => {
+        setIsMenuOpen(false);
+    }
+    const toggleSearchFalse = () => {  
+        setIsSearchVisible(false);
+    }
     return (
         <div className="bg-[#FEFEFE] z-[9999]">
             <div className="container mx-auto px-4">
                 <div className="flex items-center justify-between py-4">
                     <div className="Logo">
                         <Link to="/">
-                            <img src={logo} alt="" className="w-[100px] h-[100px]" />
+                            <img src={logo} alt="Logo-dethuong" className="w-[100px] h-[100px]" />
                         </Link>
                     </div>
                     <div className="md:hidden flex items-center space-x-4">
@@ -46,10 +51,10 @@ function Header() {
                     </div>
                     <div className={`${isMenuOpen ? 'block' : 'hidden'} md:flex md:items-center`}>
                         <ul className="flex flex-col md:flex-row md:space-x-4">
-                            <li className="p-2 text-black hover:text-red-500"><Link to="/">Trang chủ</Link></li>
-                            <li className="p-2 text-black hover:text-red-500"><Link to="/phim-bo">Phim Bộ</Link></li>
-                            <li className="p-2 text-black hover:text-red-500"><Link to="/phim-le">Phim lẻ</Link></li>
-                            <li className="p-2 text-black hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
+                            <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/">Trang chủ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/phim-bo">Phim Bộ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/phim-le">Phim lẻ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/my-list">Danh sách của tôi</Link></li>
                         </ul>
                     </div>
                     <form onSubmit={handleSubmit} className={`${isSearchVisible ? 'block' : 'hidden'} md:flex items-center`}>
@@ -60,7 +65,7 @@ function Header() {
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)} 
                         />
-                        <button type="submit">
+                        <button type="submit" onClick={toggleSearchFalse}>
                             <CiSearch color="red" className="font-bold text-red-500 ml-2 cursor-pointer" />
                         </button>
                     </form> 
