@@ -5,6 +5,19 @@ import 'react-multi-carousel/lib/styles.css';
 
 const baseUrl = "https://phimimg.com/";
 
+const Skeleton = () => (
+    <div className="grid grid-cols-5 gap-4 p-4 animate-pulse">
+        <div className="col-span-2">
+            <div className="bg-gray-300 h-96 w-full rounded-lg mb-4"></div>
+        </div>
+        <div className="col-span-3 space-y-4">
+            <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+            <div className="h-4 bg-gray-300 rounded w-full"></div>
+            <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+            <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+        </div>
+    </div>
+);
 const FilmSearch = () => {
     const { keyword } = useParams();
     const navigate = useNavigate();
@@ -57,7 +70,7 @@ const FilmSearch = () => {
                     ))}
                 </Carousel>
             ) : (
-                <p className="text-gray-400 text-center">Không tìm thấy kết quả.</p>
+                <Skeleton />
             )}
         </div>
     );
