@@ -40,7 +40,7 @@ const PhimBo = () => {
 
     return (
         <div className="container">
-            <div className="mt-[100px] mb-[50px] font-bold text-4xl">Phim Bộ</div>
+            <div className="p-4 text-black font-bold text-4xl">Phim Bộ</div>
 
             {loading ? (
                 <div className="flex space-x-4 justify-between  overflow-hidden">

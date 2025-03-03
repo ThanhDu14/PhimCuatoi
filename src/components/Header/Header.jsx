@@ -1,41 +1,58 @@
-
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import logo from "../../assets/Logocuatoi.jpg";
+import { FaBars, FaTimes } from "react-icons/fa"; // Thêm biểu tượng menu và đóng
 
 function Header() {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState("");
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State để quản lý trạng thái menu
+    const [isSearchVisible, setIsSearchVisible] = useState(false); // State để quản lý trạng thái hiển thị ô tìm kiếm
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (searchTerm.trim() !== "") {
-            
             navigate(`/search/${searchTerm}`); 
-            setSearchTerm(" ");  
+            setSearchTerm("");  
         }
     };
-    
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const toggleSearch = () => {
+        setIsSearchVisible(!isSearchVisible);
+    };
+
     return (
         <div className="bg-[#FEFEFE] z-[9999]">
-            <div className="container">
-                <div className="flex items-center justify-between ml-5 text-white">
+            <div className="container mx-auto px-4">
+                <div className="flex items-center justify-between py-4">
                     <div className="Logo">
                         <Link to="/">
                             <img src={logo} alt="" className="w-[100px] h-[100px]" />
                         </Link>
                     </div>
-                    <div className="flex">
-                        <ul className="flex">
-                            <li className="p-4 text-black hover:text-red-500"><Link to="/">Trang chủ</Link></li>
-                            <li className="p-4 text-black hover:text-red-500"><Link to="/phim-bo">Phim Bộ</Link></li>
-                            <li className="p-4 text-black hover:text-red-500"><Link to="/phim-le">Phim lẻ</Link></li>
-                            <li className="p-4 text-black hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
+                    <div className="md:hidden flex items-center space-x-4">
+                        <button onClick={toggleSearch}>
+                            <CiSearch color="red" className="font-bold text-red-500 text-2xl cursor-pointer" />
+                        </button>
+                        <button onClick={toggleMenu}>
+                            {isMenuOpen ? <FaTimes className="text-black text-2xl" /> : <FaBars className="text-black text-2xl" />}
+                        </button>
+                    </div>
+                    <div className={`${isMenuOpen ? 'block' : 'hidden'} md:flex md:items-center`}>
+                        <ul className="flex flex-col md:flex-row md:space-x-4">
+                            <li className="p-2 text-black hover:text-red-500"><Link to="/">Trang chủ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500"><Link to="/phim-bo">Phim Bộ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500"><Link to="/phim-le">Phim lẻ</Link></li>
+                            <li className="p-2 text-black hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
                         </ul>
                     </div>
-                    <form onSubmit={handleSubmit} className="flex items-center ">
+                    <form onSubmit={handleSubmit} className={`${isSearchVisible ? 'block' : 'hidden'} md:flex items-center`}>
                         <input
                             type="text"
                             placeholder="Tìm kiếm..."

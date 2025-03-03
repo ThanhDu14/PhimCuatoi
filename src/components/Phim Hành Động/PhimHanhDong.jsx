@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import background from "../../assets/background2.jpg";
+
 const baseUrl = "https://phimimg.com/";
-const imageUrl = background;
-const PhimLe = () => {
+
+const PhimHanhDong = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAPI = () => {
-            fetch("https://phimapi.com/v1/api/danh-sach/phim-le")
+            fetch("https://phimapi.com/v1/api/the-loai/hanh-dong")
                 .then(res => res.json())
                 .then(data => {
                     setData(data.data.items);
@@ -40,7 +40,7 @@ const PhimLe = () => {
 
     return (
         <div className="container mx-auto px-4 py-8">
-            <div className="p-4 text-black font-bold text-4xl">Phim Lẻ</div>
+            <div className="p-4 text-black font-bold text-4xl">Phim Hành Động</div>
             {loading ? (
                 <div className="flex space-x-4 justify-between overflow-hidden">
                     {Array.from({ length: 5 }).map((_, index) => (
@@ -71,4 +71,4 @@ const PhimLe = () => {
     );
 };
 
-export default PhimLe;
+export default PhimHanhDong;
