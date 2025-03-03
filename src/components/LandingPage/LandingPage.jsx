@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom'; // Thêm useNavigate
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import FilmInfo from '../FilmInfo/FilmInfo';
-
+import PhimBo from '../PhimBo/PhimBo';
+import PhimLe from '../Phim lẻ/Phimle';
 function LandingPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,9 +14,9 @@ function LandingPage() {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await fetch("https://phimapi.com/danh-sach/phim-moi-cap-nhat");
+        const response = await fetch("https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=8");
         const result = await response.json();
-
+        
         if (result.items) {
           setData(result.items);
         } else {
@@ -81,7 +82,10 @@ function LandingPage() {
       ) : (
         <div className="text-white text-center mt-20 text-lg">Không có phim mới.</div>
       )}
+      <PhimBo  />
+      <PhimLe />
     </div>
+    
   );
 }
 

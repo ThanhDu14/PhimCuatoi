@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
+import background from "../../assets/background2.jpg";
 const baseUrl = "https://phimimg.com/";
-
+const imageUrl = background;
 const PhimLe = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -39,8 +39,8 @@ const PhimLe = () => {
     };
 
     return (
-        <div className="container">
-            <div className="mt-[100px] mb-[50px] font-bold text-4xl">Phim Lẻ</div>
+        <div className={`w-full h-screen bg-[url('${imageUrl}')] bg-cover bg-center container` }>
+            <div className="p-4 text-white font-bold text-4xl">Phim Lẻ</div>
             {loading ? (
                 <div className="flex space-x-4 justify-between overflow-hidden">
                     {Array.from({ length: 5 }).map((_, index) => (

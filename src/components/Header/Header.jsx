@@ -1,7 +1,8 @@
-import logo from '../../assets/Logo.jpg';
+
 import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
+import logo from "../../assets/Logocuatoi.jpg";
 
 function Header() {
     const navigate = useNavigate();
@@ -11,27 +12,27 @@ function Header() {
         event.preventDefault();
 
         if (searchTerm.trim() !== "") {
-            console.log("Từ khóa tìm kiếm:", searchTerm);
+            
             navigate(`/search/${searchTerm}`); 
-            setSearchTerm("");  
+            setSearchTerm(" ");  
         }
     };
     
     return (
-        <div className="bg-[#101010] z-[9999]">
+        <div className="bg-[#FEFEFE] z-[9999]">
             <div className="container">
                 <div className="flex items-center justify-between ml-5 text-white">
                     <div className="Logo">
                         <Link to="/">
-                            <img src={logo} alt="Netflix Case Study" className="w-[200px] h-[100px]" />
+                            <img src={logo} alt="" className="w-[100px] h-[100px]" />
                         </Link>
                     </div>
                     <div className="flex">
                         <ul className="flex">
-                            <li className="p-4 hover:text-red-500"><Link to="/">Trang chủ</Link></li>
-                            <li className="p-4 hover:text-red-500"><Link to="/phim-bo">Phim Bộ</Link></li>
-                            <li className="p-4 hover:text-red-500"><Link to="/phim-le">Phim lẻ</Link></li>
-                            <li className="p-4 hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
+                            <li className="p-4 text-black hover:text-red-500"><Link to="/">Trang chủ</Link></li>
+                            <li className="p-4 text-black hover:text-red-500"><Link to="/phim-bo">Phim Bộ</Link></li>
+                            <li className="p-4 text-black hover:text-red-500"><Link to="/phim-le">Phim lẻ</Link></li>
+                            <li className="p-4 text-black hover:text-red-500"><Link to="/my-list">Danh sách của tôi</Link></li>
                         </ul>
                     </div>
                     <form onSubmit={handleSubmit} className="flex items-center ">
