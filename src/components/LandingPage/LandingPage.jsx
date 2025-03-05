@@ -14,7 +14,7 @@ function LandingPage() {
   useEffect(() => {
     const fetchAPI = async () => {
       try {
-        const response = await fetch("https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=8");
+        const response = await fetch("https://phimapi.com/danh-sach/phim-moi-cap-nhat?page=1");
         const result = await response.json();
 
         if (result.items) {
@@ -62,30 +62,41 @@ function LandingPage() {
         <Carousel
           responsive={responsive}
           autoPlay={true}
-          autoPlaySpeed={2000}
+
           infinite={true}
-          swipeable={true}
-          draggable={true}
+
         >
           {data.map((item, index) => (
             <div key={index} className="relative">
-             
-              <div className="absolute top-[10%] left-[5%] md:top-[200px] md:left-20 text-white">
-                <h1 className="text-2xl md:text-4xl font-bold max-w-[200px] md:max-w-[400px]">
-                  {item.name}
-                </h1>
-                <button
-                  onClick={() => handleFilmSelect(item.slug)}
-                  className="mt-4 border px-4 py-2 bg-red-500 text-white hover:bg-red-700 transition text-sm md:text-base"
-                >
-                  Xem Ngay
-                </button>
+
+              <div className="relative">
+                {/* Lớp phủ mờ vừa phải */}
+                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+                {/* Nội dung trên ảnh */}
+                <div className="absolute top-[10%] left-[5%] md:top-[200px] md:left-20 text-white z-10">
+                  <img
+                    src={item.poster_url}
+                    className="w-[200px] h-[300px] object-cover mb-[20px] cursor-pointer"
+                  />
+                  <h1 className="text-2xl md:text-4xl font-bold max-w-[200px] md:max-w-[400px]">
+                    {item.name}
+                  </h1>
+                  <button
+                    onClick={() => handleFilmSelect(item.slug)}
+                    className="mt-4 border px-4 py-2 bg-red-500 text-white hover:bg-red-700 transition text-sm md:text-base"
+                  >
+                    Xem Ngay
+                  </button>
+                </div>
+
+                {/* Ảnh nền */}
+                <img
+                  src={item.thumb_url}
+                  alt={`Slide ${index}`}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
               </div>
-              <img
-                src={item.thumb_url}
-                alt={`Slide ${index}`}
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
             </div>
           ))}
         </Carousel>
@@ -93,9 +104,9 @@ function LandingPage() {
         <div className="text-white text-center mt-20 text-lg">Không có phim mới.</div>
       )}
       <div className="bg-gradient-to-r from-[#7773bd] via-[#acacec] to-[#cfe0e3]">
-      <PhimBo />
-      <PhimLe />
-      <PhimHanhDong />
+        <PhimBo />
+        <PhimLe />
+        <PhimHanhDong />
       </div>
     </div>
   );

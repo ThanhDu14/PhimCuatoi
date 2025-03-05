@@ -39,7 +39,7 @@ const PhimLe = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mt-20 px-4 py-8 pt-16">
             <div className="p-4 text-black font-bold text-4xl">Phim Lẻ</div>
             {loading ? (
                 <div className="flex space-x-4 justify-between overflow-hidden">

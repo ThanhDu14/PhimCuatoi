@@ -14,8 +14,8 @@ function Header() {
         event.preventDefault();
 
         if (searchTerm.trim() !== "") {
-            navigate(`/search/${searchTerm}`); 
-            setSearchTerm("");  
+            navigate(`/search/${searchTerm}`);
+            setSearchTerm("");
         }
     };
 
@@ -29,13 +29,15 @@ function Header() {
     const toggleMenuFalse = () => {
         setIsMenuOpen(false);
     }
-    const toggleSearchFalse = () => {  
+    const toggleSearchFalse = () => {
         setIsSearchVisible(false);
     }
     return (
-        <div className="bg-[#FEFEFE] z-[9999]">
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between py-4">
+        <div className="fixed  left-0 z-50 w-full top-0">
+            <div className="container bg-gradient-to-r from-[#11c19d]/50 via-[#d2bfdf]/50 to-[#c7e3e8]/50 w-full px-4">
+
+
+                <div className="flex items-center justify-between ">
                     <div className="Logo">
                         <Link to="/">
                             <img src={logo} alt="Logo-dethuong" className="w-[100px] h-[100px]" />
@@ -49,7 +51,7 @@ function Header() {
                             {isMenuOpen ? <FaTimes className="text-black text-2xl" /> : <FaBars className="text-black text-2xl" />}
                         </button>
                     </div>
-                    <div className={`${isMenuOpen ? 'block' : 'hidden'} md:flex md:items-center`}>
+                    <div className={`${isMenuOpen ? 'absolute right-0 top-full  bg-white shadow-md' : 'hidden'} md:static md:flex md:items-center`}>
                         <ul className="flex flex-col md:flex-row md:space-x-4">
                             <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/">Trang chủ</Link></li>
                             <li className="p-2 text-black hover:text-red-500" onClick={toggleMenuFalse}><Link to="/phim-bo">Phim Bộ</Link></li>
@@ -63,12 +65,12 @@ function Header() {
                             placeholder="Tìm kiếm..."
                             className="border border-red-500 p-2 bg-black text-white placeholder-gray-500 rounded-[35px]"
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)} 
+                            onChange={(e) => setSearchTerm(e.target.value)}
                         />
                         <button type="submit" onClick={toggleSearchFalse}>
                             <CiSearch color="red" className="font-bold text-red-500 ml-2 cursor-pointer" />
                         </button>
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
