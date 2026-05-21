@@ -1,50 +1,101 @@
 import React from 'react';
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-[#101010] mt-10 w-full text-white  py-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto px-4">
-                <div className="mr-4">
-                    <h2 className="py-4 font-bold text-4xl text-red-500">Giới Thiệu</h2>
-                    <p>Website xem phim miễn phí, chất lượng cao, không quảng cáo.</p> 
+        <footer className="bg-[#0f0f0f] border-t border-white/5 py-12 text-netflix-textGray text-xs md:text-sm font-sans mt-auto">
+            <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+                
+                {/* Intro column */}
+                <div className="col-span-2 md:col-span-1 space-y-4">
+                    <h4 className="text-white font-bold text-sm tracking-widest uppercase border-b border-netflix-red pb-1.5 inline-block">
+                        PHIM<span className="text-netflix-red">CUATOI</span>
+                    </h4>
+                    <p className="leading-relaxed font-light text-netflix-textGray">
+                        Website xem phim trực tuyến miễn phí, chất lượng cao, không chèn quảng cáo khó chịu. Trải nghiệm điện ảnh tốt nhất dành cho Sếp!
+                    </p> 
                 </div>
-                <div>
-                    <div>
-                        <h2 className="py-4 font-bold text-4xl text-red-500">Danh Mục</h2>
-                    </div>
-                    <ul>
-                    <li className="py-2">
-                        <Link to="/" className="hover:text-red-500">Trang Chủ</Link>
-                    </li>
-                    <li className="py-2">
-                        <Link to="/phim-bo" className="hover:text-red-500">Phim Bộ</Link>
-                    </li>
-                    <li className="py-2">
-                        <Link to="/phim-le" className="hover:text-red-500">Phim Lẻ</Link>
-                    </li>
-                    <li className="py-2 ">
-                        <Link to="/my-list" className="hover:text-red-500">Danh Sách Của Tôi</Link>
-                    </li>
+
+                {/* Directory Column */}
+                <div className="space-y-3">
+                    <h4 className="text-white font-bold text-xs uppercase tracking-wider">Danh Mục</h4>
+                    <ul className="space-y-2">
+                        <li>
+                            <Link to="/" className="text-netflix-textGray hover:text-netflix-red hover:underline transition-colors duration-150">
+                                Trang Chủ
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/phim-bo" className="text-netflix-textGray hover:text-netflix-red hover:underline transition-colors duration-150">
+                                Phim Bộ
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/phim-le" className="text-netflix-textGray hover:text-netflix-red hover:underline transition-colors duration-150">
+                                Phim Lẻ
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/my-list" className="text-netflix-textGray hover:text-netflix-red hover:underline transition-colors duration-150">
+                                Danh Sách Của Tôi
+                            </Link>
+                        </li>
                     </ul>
                 </div>
-                <div>
-                    <h2 className="py-4 font-bold text-4xl text-red-500">INFO BẠN ĐẸP TRAI</h2>
-                    <ul className="flex space-x-4 ">
-                        <li className="text-3xl">
-                            <a href="https://www.facebook.com/nguyen.thanh.du.601641/" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+
+                {/* Contact Column */}
+                <div className="space-y-3">
+                    <h4 className="text-white font-bold text-xs uppercase tracking-wider">Hỗ Trợ</h4>
+                    <ul className="space-y-2">
+                        <li className="hover:text-white transition-colors duration-150 cursor-pointer">
+                            Câu hỏi thường gặp
+                        </li>
+                        <li className="hover:text-white transition-colors duration-150 cursor-pointer">
+                            Trung tâm hỗ trợ
+                        </li>
+                        <li className="hover:text-white transition-colors duration-150 cursor-pointer">
+                            Điều khoản sử dụng
+                        </li>
+                        <li className="hover:text-white transition-colors duration-150 cursor-pointer">
+                            Quyền riêng tư
+                        </li>
+                    </ul>
+                </div>
+
+                {/* Info Column */}
+                <div className="space-y-4">
+                    <h4 className="text-white font-bold text-xs uppercase tracking-wider">Thông Tin Liên Hệ</h4>
+                    <p className="font-light">Thành Dự - Nhà phát triển Website Phim Của Tôi.</p>
+                    <ul className="flex space-x-4 items-center">
+                        <li>
+                            <a 
+                                href="https://www.facebook.com/nguyen.thanh.du.601641/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-netflix-textGray hover:text-netflix-red transition-all duration-200 hover:scale-110 block text-2xl"
+                                title="Facebook"
+                            >
                                 <FaFacebook />
                             </a>
                         </li>
-                        <li > 
-                            <a href="https://www.instagram.com/thanhdu1402/" target="_blank" rel="noopener noreferrer" className="text-3xl hover:text-red-500">
+                        <li> 
+                            <a 
+                                href="https://www.instagram.com/thanhdu1402/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="text-netflix-textGray hover:text-netflix-red transition-all duration-200 hover:scale-110 block text-2xl"
+                                title="Instagram"
+                            >
                                 <FaInstagram />
                             </a>
                         </li>
                     </ul>
                 </div>
+            </div>
+
+            <div className="border-t border-white/5 mt-10 pt-6 text-center max-w-6xl mx-auto px-4 text-netflix-textGray/60 text-xs">
+                <p>&copy; {new Date().getFullYear()} Phim Của Tôi. All rights reserved. Designed for cinema fans.</p>
             </div>
         </footer>
     );
