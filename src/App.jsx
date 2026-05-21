@@ -38,7 +38,7 @@ function App() {
           isOpen={isShuffleOpen} 
           onClose={() => setIsShuffleOpen(false)} 
         />
-        <Analytics />
+        <Analytics mode={import.meta.env.MODE} />
       </div>
     </Router>
   );
