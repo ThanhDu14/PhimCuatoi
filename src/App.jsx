@@ -10,6 +10,8 @@ import MyList from './components/MyList/MyList';
 import Discover from './components/Discover/Discover';
 import Footer from './components/Footer/Footer';
 import MovieShuffle from './components/MovieShuffle/MovieShuffle';
+import { Analytics } from '@vercel/analytics/react';
+
 
 function App() {
   const [isShuffleOpen, setIsShuffleOpen] = useState(false);
@@ -36,6 +38,7 @@ function App() {
           isOpen={isShuffleOpen} 
           onClose={() => setIsShuffleOpen(false)} 
         />
+        <Analytics />
       </div>
     </Router>
   );
