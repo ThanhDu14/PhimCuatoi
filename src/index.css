@@ -84,3 +84,26 @@ body {
   border-color: #e50914 !important;
   z-index: 50;
 }
+
+/* Ambient light glow pulsing effect */
+@keyframes ambient-glow {
+  0% {
+    opacity: 0.35;
+    transform: scale(1.03);
+    filter: blur(40px);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+    filter: blur(55px);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1.03);
+    filter: blur(40px);
+  }
+}
+
+.animate-pulse-ambient {
+  animation: ambient-glow 8s ease-in-out infinite;
+}

@@ -109,7 +109,7 @@ const FilmInfo = () => {
     const handleEpisodeClick = (ep) => {
         setCurrentEpUrl(ep.link_embed);
         setCurrentEpName(ep.name);
-        
+
         // Scroll mượt đến trình phát video
         const playerElement = document.getElementById('video-player');
         if (playerElement) {
@@ -119,15 +119,15 @@ const FilmInfo = () => {
 
     return (
         <div className="bg-netflix-dark min-h-screen pb-24 text-white">
-            
+
             {/* Backdrop Banner section */}
             <div className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden">
-                <div 
+                <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat filter blur-xs"
                     style={{ backgroundImage: `url(${thumb_url || poster_url})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-netflix-dark via-netflix-dark/40 to-black/60 z-10" />
-                
+
                 {/* Visual fading overlays */}
                 <div className="absolute inset-0 z-10 flex flex-col justify-end max-w-7xl mx-auto px-4 md:px-8 pb-8">
                     <h1 className="text-3xl md:text-5xl font-black font-sans tracking-wide mb-2 max-w-3xl drop-shadow-md">
@@ -141,7 +141,7 @@ const FilmInfo = () => {
 
             {/* Movie Info Grid details */}
             <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-5 gap-8 mt-4">
-                
+
                 {/* Left Card: Poster */}
                 <div className="lg:col-span-2">
                     <div className="relative group max-w-sm mx-auto rounded-lg overflow-hidden border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-102">
@@ -187,11 +187,10 @@ const FilmInfo = () => {
                         )}
                         <button
                             onClick={toggleMyList}
-                            className={`flex items-center space-x-2 border font-bold px-5 py-3 rounded-md transition duration-200 transform active:scale-95 shadow-md ${
-                                isInList 
-                                    ? "bg-white text-black border-white hover:bg-white/80" 
-                                    : "bg-transparent text-white border-white/30 hover:bg-white/10"
-                            }`}
+                            className={`flex items-center space-x-2 border font-bold px-5 py-3 rounded-md transition duration-200 transform active:scale-95 shadow-md ${isInList
+                                ? "bg-white text-black border-white hover:bg-white/80"
+                                : "bg-transparent text-white border-white/30 hover:bg-white/10"
+                                }`}
                         >
                             {isInList ? <FaCheck className="text-sm" /> : <FaPlus className="text-sm" />}
                             <span>{isInList ? "Đã Lưu vào List" : "Lưu vào List"}</span>
@@ -206,7 +205,7 @@ const FilmInfo = () => {
                                 {content || "Chưa có cốt truyện chi tiết cho bộ phim này."}
                             </p>
                         </div>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm font-medium">
                             <div>
                                 <p className="text-netflix-textGray mb-0.5">Thể loại</p>
@@ -232,7 +231,7 @@ const FilmInfo = () => {
             </div>
 
             {/* Video Player section */}
-            {currentEpUrl && (
+            {currentEpUrl ? (
                 <div id="video-player" className="max-w-7xl mx-auto px-4 md:px-8 mt-16 space-y-6">
                     <div className="flex items-center space-x-2 border-b border-white/10 pb-3">
                         <FaFilm className="text-netflix-red text-2xl" />
@@ -241,16 +240,26 @@ const FilmInfo = () => {
                         </h2>
                     </div>
 
-                    {/* Embed Frame */}
-                    <div className="w-full relative rounded-2xl overflow-hidden border-2 border-netflix-red/30 shadow-2xl bg-black aspect-video-cinematic max-w-5xl mx-auto">
-                        <iframe
-                            src={currentEpUrl}
-                            title={`Xem phim ${name}`}
-                            className="absolute inset-0 w-full h-full"
-                            allowFullScreen
-                            scrolling="no"
-                            frameBorder="0"
+                    {/* Embed Frame with Ambient Glow */}
+                    <div className="relative max-w-5xl mx-auto group">
+                        {/* Lớp Đèn Nền Ambient Light tỏa sáng phía sau */}
+                        <div
+                            className="absolute inset-0 -z-10 bg-cover bg-center rounded-2xl opacity-40 scale-105 select-none pointer-events-none transition-all duration-1000 animate-pulse-ambient"
+                            style={{ backgroundImage: `url(${thumb_url || poster_url})` }}
                         />
+
+                        {/* Player Container */}
+                        <div className="w-full relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black aspect-video-cinematic">
+                            <iframe
+                                src={currentEpUrl}
+                                title={`Xem phim ${name}`}
+                                className="absolute inset-0 w-full h-full"
+                                allowFullScreen
+                                scrolling="no"
+                                frameBorder="0"
+                                sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
+                            />
+                        </div>
                     </div>
 
                     {/* Episode Grid select */}
@@ -264,11 +273,10 @@ const FilmInfo = () => {
                                     <button
                                         key={index}
                                         onClick={() => handleEpisodeClick(ep)}
-                                        className={`py-2 px-3 rounded text-center text-sm font-semibold transition duration-200 transform active:scale-95 ${
-                                            currentEpUrl === ep.link_embed
-                                                ? "bg-netflix-red text-white shadow-lg"
-                                                : "bg-netflix-lightCard/60 hover:bg-netflix-lightCard text-netflix-textGray hover:text-white"
-                                        }`}
+                                        className={`py-2 px-3 rounded text-center text-sm font-semibold transition duration-200 transform active:scale-95 ${currentEpUrl === ep.link_embed
+                                            ? "bg-netflix-red text-white shadow-lg"
+                                            : "bg-netflix-lightCard/60 hover:bg-netflix-lightCard text-netflix-textGray hover:text-white"
+                                            }`}
                                     >
                                         Tập {ep.name}
                                     </button>
@@ -276,6 +284,16 @@ const FilmInfo = () => {
                             </div>
                         </div>
                     )}
+                </div>
+            ) : (
+                <div className="max-w-7xl mx-auto px-4 md:px-8 mt-16">
+                    <div className="bg-netflix-card/50 backdrop-blur-md border border-white/5 rounded-2xl p-8 text-center max-w-3xl mx-auto shadow-xl">
+                        <FaFilm className="text-netflix-red/60 text-5xl mx-auto mb-4 animate-pulse" />
+                        <h3 className="text-xl font-extrabold text-white mb-2">🤵  Phim Này Chưa Có Video Thuyết Minh!</h3>
+                        <p className="text-sm text-netflix-textGray max-w-md mx-auto leading-relaxed">
+                            Hiện tại phim này đang ở trạng thái thông tin (hoặc phim chiếu rạp mới cập nhật) nên API nguồn chưa cung cấp link xem trực tuyến. Bạn vui lòng thử lại sau hoặc chọn một cực phẩm khác để thưởng thức nhé!
+                        </p>
+                    </div>
                 </div>
             )}
         </div>

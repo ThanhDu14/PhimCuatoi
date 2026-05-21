@@ -2,9 +2,9 @@ import { CiSearch } from "react-icons/ci";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import logo from "../../assets/Logocuatoi.jpg";
-import { FaBars, FaTimes, FaFilm } from "react-icons/fa";
+import { FaBars, FaTimes, FaFilm, FaDice } from "react-icons/fa";
 
-function Header() {
+function Header({ onTriggerShuffle }) {
     const navigate = useNavigate();
     const location = useLocation();
     const [searchTerm, setSearchTerm] = useState("");
@@ -50,6 +50,7 @@ function Header() {
         { path: "/", label: "Trang chủ" },
         { path: "/phim-bo", label: "Phim Bộ" },
         { path: "/phim-le", label: "Phim Lẻ" },
+        { path: "/discover", label: "Khám Phá" },
         { path: "/my-list", label: "Danh sách của tôi" }
     ];
 
@@ -122,6 +123,16 @@ function Header() {
                             <CiSearch className="text-2xl font-bold" />
                         </button>
                     </form>
+
+                    {/* Shuffle Button "Xem Đại Đi!" */}
+                    <button 
+                        type="button"
+                        onClick={onTriggerShuffle} 
+                        className="p-2 rounded-full hover:bg-white/10 text-netflix-red hover:text-white transition-all duration-200 hover:scale-110 active:scale-95 flex items-center justify-center"
+                        title="Xem Đại Đi! (Chọn ngẫu nhiên)"
+                    >
+                        <FaDice className="text-2xl" />
+                    </button>
 
                     {/* Mobile Menu Button */}
                     <button 
