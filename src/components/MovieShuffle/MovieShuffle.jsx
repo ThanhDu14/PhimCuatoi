@@ -194,6 +194,9 @@ const MovieShuffle = ({ isOpen, onClose }) => {
         } else {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
             if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+            setStatus('idle');
+            setWinner(null);
+            setCountdown(4);
         }
     }, [isOpen, movies.length]);
 
@@ -210,7 +213,7 @@ const MovieShuffle = ({ isOpen, onClose }) => {
 
     // Handle countdown after reveal
     useEffect(() => {
-        if (status === 'revealed' && winner) {
+        if (isOpen && status === 'revealed' && winner) {
             countdownIntervalRef.current = setInterval(() => {
                 setCountdown((prev) => {
                     if (prev <= 1) {
@@ -227,7 +230,7 @@ const MovieShuffle = ({ isOpen, onClose }) => {
         return () => {
             if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
         };
-    }, [status, winner, navigate, onClose]);
+    }, [isOpen, status, winner, navigate, onClose]);
 
     // Clean up timers on unmount
     useEffect(() => {
