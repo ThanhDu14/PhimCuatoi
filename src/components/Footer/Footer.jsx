@@ -13,7 +13,7 @@ const Footer = () => {
                         PHIM<span className="text-netflix-red">CUATOI</span>
                     </h4>
                     <p className="leading-relaxed font-light text-netflix-textGray">
-                        Website xem phim trực tuyến miễn phí, chất lượng cao, không chèn quảng cáo khó chịu. Trải nghiệm điện ảnh tốt nhất dành cho Sếp!
+                        Website xem phim trực tuyến miễn phí, chất lượng cao, không chèn quảng cáo khó chịu. Trải nghiệm điện ảnh tốt nhất dành cho bạn!
                     </p> 
                 </div>
 

@@ -34,7 +34,7 @@ const MyList = () => {
                 {myList.length === 0 ? (
                     <div className="flex flex-col items-center justify-center mt-20 p-8 bg-netflix-card rounded-lg border border-white/5 text-center">
                         <p className="text-netflix-textGray text-lg md:text-xl mb-6">
-                            Danh sách yêu thích của Sếp đang trống trơn! 😲
+                            Danh sách yêu thích của bạn đang trống trơn! 😲
                         </p>
                         <Link 
                             to="/" 

@@ -201,7 +201,7 @@ const FilmSearch = () => {
                             Không tìm thấy phim nào khớp với từ khóa "{keyword}" 😭
                         </p>
                         <p className="text-sm text-netflix-textGray">
-                            Sếp thử tìm với từ khóa khác xem sao nhé!
+                            Bạn thử tìm với từ khóa khác xem sao nhé!
                         </p>
                     </div>
                 )}

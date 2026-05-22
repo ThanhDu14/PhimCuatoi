@@ -211,7 +211,7 @@ const Discover = () => {
                         Khám Phá Phim
                     </h1>
                     <p className="text-netflix-textGray text-sm mt-2 pl-4">
-                        Sếp muốn tìm thể loại gì? Em lo tất!
+                        Bạn muốn tìm thể loại gì? Mình có đủ cả!
                     </p>
                 </div>
 

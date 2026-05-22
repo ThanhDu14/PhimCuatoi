@@ -51,7 +51,7 @@ function LandingPage() {
       {/* Hero Carousel */}
       {loading ? (
         <div className="relative h-[75vh] w-full bg-netflix-dark animate-pulse flex items-center justify-center">
-          <div className="text-netflix-red font-bold text-2xl">Đang tải phim hot cho Sếp...</div>
+          <div className="text-netflix-red font-bold text-2xl">Đang tải danh sách phim mới...</div>
         </div>
       ) : error ? (
         <div className="text-netflix-red text-center pt-32 text-lg font-semibold">{error}</div>
